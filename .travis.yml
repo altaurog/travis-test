@@ -2,7 +2,3 @@ script: true
 notifications:
   slack:
     secure: yfMOoxka3T6Rr6L0r3Oztol3dLovLzbP32X5RpbnUkhdhOu188FRChd387MDu+tTcQUtDFuYROj43dUlG8if7+qWQr0srsXjE+YUV8qBma4Yx3KJaTUtUWDAvZhvOLIpi/5Az+8V5AxTDL9ySU9wNl+WYvHSgsYoHHHZXvh3DTXHJPMsQW5niKImnS4nazblUpZgYUHdwxpdsTua/iW+Mop6LIczf7SPKT65pReONfhZU6Jax/Nk37GmbQCDAjdFl5KF7RaroWqWlahA6keM2tdjfGOAGCfM2fOHG3qKD25Y4hKseU2s9bIcGFdSOPcV4R+UXIwLsqJ57GMbjX9LCJov/Lw2UpOqA52aZiTw9Ki+X9+B4qt8XswamMJScySQIfsG+xWY9S118sB7NOpEvFLuJEz2miKl80CJKJUcQ6as7UyDz8PtXJ+zUffQzOckzy1uhuv30R/PETpo3xjuf5cr/BS91m6iz3jzSb6xqDaHgOTZdElST6lKOG1c/K+9G1kwNJLzapIvMvBCI61gh23Nd5h/w6i/q7/r4ljjqvVOPDvQnNQ0z3tQ4/92OoI4R7hIssv8xOPzYZQ0z1c7iinrvv1320/nPE1rE+0Ljx/EKVRwSW1Qu6c+aI9O3PCPgdyOfJCsNO5ENGe/ZgOCx7z7laLjakxvN16zDlU7MPE=
-    template: |
-        build message %{message}
-        build result %{result}
-        TRAVIS_TAG $TRAVIS_TAG
