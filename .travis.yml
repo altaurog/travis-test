@@ -5,6 +5,8 @@ script:
     - echo TRAVIS_PULL_REQUEST $TRAVIS_PULL_REQUEST
     - echo TRAVIS_PULL_REQUEST_SHA $TRAVIS_PULL_REQUEST_SHA
     - echo TRAVIS_PULL_REQUEST_BRANCH $TRAVIS_PULL_REQUEST_BRANCH
+    - git show-ref
+    - get ls-remote origin
 notifications:
   slack:
     template: "deploying $TRAVIS_BRANCH to %{branch}"
