@@ -1,8 +1,10 @@
 env:
     global:
         - BRANCH_REF=$(git ls-remote -q --heads | grep $TRAVIS_COMMIT | cut -f2)
+        - IS_VISTA=$(git ls-remote -q --heads | grep $TRAVIS_COMMIT | grep /refs/heads/vista)
 script:
     - echo BRANCH_REF $BRANCH_REF
+    - echo IS_VISTA $IS_VISTA
     - echo TRAVIS_COMMIT $TRAVIS_COMMIT
     - echo TRAVIS_BRANCH $TRAVIS_BRANCH
     - echo TRAVIS_TAG $TRAVIS_TAG
@@ -12,6 +14,7 @@ script:
     - git show-ref
     - git ls-remote origin
     - git ls-remote origin | grep $TRAVIS_COMMIT
+    - if [[ $IS_VISTA ]]; then echo is vista; fi
 notifications:
   slack:
     template: "deploying $TRAVIS_BRANCH to %{branch}"
