@@ -3,7 +3,9 @@ env:
         - BRANCH_REF=$(git ls-remote -q --heads | grep $TRAVIS_COMMIT | cut -f2)
         - IS_VISTA=$(git ls-remote -q --heads | grep $TRAVIS_COMMIT | grep refs/heads/vista)
         - IS_RELEASE=$( [[ "$IS_VISTA" && "$TRAVIS_TAG" ]] && echo true )
-        - VAR_A=$(./buildenv.sh)
+        - VAR_A=$(./buildenv.sh VAR_A)
+        - VAR_B=$(./buildenv.sh VAR_B)
+        - VAR_C=$(./buildenv.sh VAR_C)
 script:
     - echo VAR_A $VAR_A
     - echo VAR_B $VAR_B

@@ -1,3 +1,5 @@
 #!/bin/bash
-echo 1 VAR_B=2 VAR_C=4
-
+export VAR_A=1
+export VAR_B=2
+export VAR_C=4
+env|grep $1|sed s/^$1=//
