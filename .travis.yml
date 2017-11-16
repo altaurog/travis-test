@@ -1,4 +1,22 @@
-script: true
+env:
+    global:
+        - BRANCH_REF=$(git ls-remote -q --heads | grep $TRAVIS_COMMIT | cut -f2)
+        - IS_VISTA=$(git ls-remote -q --heads | grep $TRAVIS_COMMIT | grep /refs/heads/vista)
+script:
+    - echo BRANCH_REF $BRANCH_REF
+    - echo IS_VISTA $IS_VISTA
+    - echo TRAVIS_COMMIT $TRAVIS_COMMIT
+    - echo TRAVIS_BRANCH $TRAVIS_BRANCH
+    - echo TRAVIS_TAG $TRAVIS_TAG
+    - echo TRAVIS_PULL_REQUEST $TRAVIS_PULL_REQUEST
+    - echo TRAVIS_PULL_REQUEST_SHA $TRAVIS_PULL_REQUEST_SHA
+    - echo TRAVIS_PULL_REQUEST_BRANCH $TRAVIS_PULL_REQUEST_BRANCH
+    - git show-ref
+    - git ls-remote origin
+    - git ls-remote origin | grep $TRAVIS_COMMIT
+    - if [[ $IS_VISTA ]]; then echo is vista; fi
 notifications:
   slack:
-    secure: yfMOoxka3T6Rr6L0r3Oztol3dLovLzbP32X5RpbnUkhdhOu188FRChd387MDu+tTcQUtDFuYROj43dUlG8if7+qWQr0srsXjE+YUV8qBma4Yx3KJaTUtUWDAvZhvOLIpi/5Az+8V5AxTDL9ySU9wNl+WYvHSgsYoHHHZXvh3DTXHJPMsQW5niKImnS4nazblUpZgYUHdwxpdsTua/iW+Mop6LIczf7SPKT65pReONfhZU6Jax/Nk37GmbQCDAjdFl5KF7RaroWqWlahA6keM2tdjfGOAGCfM2fOHG3qKD25Y4hKseU2s9bIcGFdSOPcV4R+UXIwLsqJ57GMbjX9LCJov/Lw2UpOqA52aZiTw9Ki+X9+B4qt8XswamMJScySQIfsG+xWY9S118sB7NOpEvFLuJEz2miKl80CJKJUcQ6as7UyDz8PtXJ+zUffQzOckzy1uhuv30R/PETpo3xjuf5cr/BS91m6iz3jzSb6xqDaHgOTZdElST6lKOG1c/K+9G1kwNJLzapIvMvBCI61gh23Nd5h/w6i/q7/r4ljjqvVOPDvQnNQ0z3tQ4/92OoI4R7hIssv8xOPzYZQ0z1c7iinrvv1320/nPE1rE+0Ljx/EKVRwSW1Qu6c+aI9O3PCPgdyOfJCsNO5ENGe/ZgOCx7z7laLjakxvN16zDlU7MPE=
+    template: "deploying $TRAVIS_BRANCH to %{branch}"
+    rooms:
+      secure: oQjSjVuOky0GQiFdTs0RsgMEXYdt0fusUECLW1f7D25Uykcv2Nn6wn+tkw65waBzk7hYe6vcTXGbECsgC3igZHVaG9qRO/4H4JsOlllXLcX9j4llKluq+AzK9ocbpan6lSGy+wLTlNmhPlGKBf+kySYL/oBYKvHSQ1RPgVhbUCWeW8QPjKuRzjxA4ce73cSFffFZBiwJ7C2/eArxxqXXmYPI6zF79nn8TC/WuwSJ7k2NBaLTuHguUNEpeg5tA2DFi1xJx62Xn3Kni19ZNSdv1OAL+zupBU1NMVFlufUG8shBX62ogIIefAOIUqxB29n5Qxvyq7sAfme6jDchwUGU1o113EsrtSeicF8wZ9EW+lqfvt8Zgn00hPUYNEaZrwSKZNTSLgNf8P6lt0GN4YQOarbLS8VcVD4sZmPDE/+vSVQ3rkBNSq98j/0865LqdLxY1dedDLG4i+TUVQj1ijuBVvgyvZ7uiHCVDqzFVZdwo7FLP9Pfg2qhIfvicEYrG8PLulerGWTOaJ76zaesgsNfSNT+pDGyG1jlA4ZdTbZJLBS+FYuHuQLSvKfvujKy6II0YJ0ezoWjymAqkW/81J5qtzXRfG2s0yeAHZvtj4wBfqdwyKLMnujB2kCwPsYTt7t46zHhM/hEdPxQSkEn/CbkWd2XUY7CZLX3jqOThYLM2vo=
