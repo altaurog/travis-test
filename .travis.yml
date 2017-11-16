@@ -1,4 +1,8 @@
+env:
+    global:
+        - BRANCH_REF=$(git ls-remote -q --heads | grep $TRAVIS_COMMIT | cut -f2)
 script:
+    - echo BRANCH_REF $BRANCH_REF
     - echo TRAVIS_COMMIT $TRAVIS_COMMIT
     - echo TRAVIS_BRANCH $TRAVIS_BRANCH
     - echo TRAVIS_TAG $TRAVIS_TAG
@@ -7,6 +11,7 @@ script:
     - echo TRAVIS_PULL_REQUEST_BRANCH $TRAVIS_PULL_REQUEST_BRANCH
     - git show-ref
     - git ls-remote origin
+    - git ls-remote origin | grep $TRAVIS_COMMIT
 notifications:
   slack:
     template: "deploying $TRAVIS_BRANCH to %{branch}"
