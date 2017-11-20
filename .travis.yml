@@ -1,2 +1,5 @@
+env:
+    global:
+        - REAL_BRANCH=$(git ls-remote origin | sed -n "\|$TRAVIS_COMMIT\s\+refs/heads/|{s///p}")
 script:
-    - bash -xv getbranch.sh
+    - env
