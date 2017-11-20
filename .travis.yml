@@ -7,20 +7,10 @@ env:
         - VAR_B=$(./buildenv.sh VAR_B)
         - VAR_C=$(./buildenv.sh VAR_C)
 script:
-    - echo VAR_A $VAR_A
-    - echo VAR_B $VAR_B
-    - echo VAR_C $VAR_C
-    - echo IS_RELEASE $IS_RELEASE
-    - echo BRANCH_REF $BRANCH_REF
-    - echo IS_VISTA $IS_VISTA
-    - echo TRAVIS_COMMIT $TRAVIS_COMMIT
-    - echo TRAVIS_BRANCH $TRAVIS_BRANCH
-    - echo TRAVIS_TAG $TRAVIS_TAG
-    - echo TRAVIS_PULL_REQUEST $TRAVIS_PULL_REQUEST
-    - echo TRAVIS_PULL_REQUEST_SHA $TRAVIS_PULL_REQUEST_SHA
-    - echo TRAVIS_PULL_REQUEST_BRANCH $TRAVIS_PULL_REQUEST_BRANCH
+    - bash getbranch.sh
     - git show-ref
     - git ls-remote origin
     - git ls-remote origin | grep $TRAVIS_COMMIT
     - if [[ "$IS_VISTA" ]]; then echo is vista; fi
     - if [[ "$IS_RELEASE" ]]; then echo release; fi
+    - env
