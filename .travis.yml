@@ -1,5 +1,8 @@
 env:
     global:
         - REAL_BRANCH=$(git ls-remote origin | sed -n "\|$TRAVIS_COMMIT\s\+refs/heads/|{s///p}")
+before_install:
+    - pip install --user awscli
 script:
-    - env
+    - ~/.local/bin/aws s3api help
+    - env | sort
